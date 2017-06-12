@@ -25,3 +25,13 @@ files, allowing for Kubernetes config maps.
 | /wordpress-in/.htaccess | /var/www/html/.htaccess |
 | /wordpress-in/wp-config.php | /var/www/html/wp-config.php |
 | /php-in/*.ini | /usr/local/etc/php/conf.d/ |
+
+## Test
+
+The docker-compose file `test.yaml` can be used to startup MySQL and the
+Wordpress base containers. The Wordpress installation can be then accessed
+from `localhost:8080`.
+
+```
+docker-compose -f test.yaml up > log.txt &
+```
