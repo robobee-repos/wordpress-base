@@ -15,11 +15,22 @@ RUN set -x \
 # Install plugins
 
 WORKDIR /tmp
+
 RUN set -x \
   && wget https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip \
+  && echo 'e4a7c8e2d344d03007ea6ec734f08f7b5479755966bca61121f72f8197ff85bd  all-in-one-wp-security-and-firewall.zip' | sha256sum -c \
   && cd /usr/src/wordpress/wp-content/plugins \
   && unzip /tmp/all-in-one-wp-security-and-firewall.zip \
-  && rm /tmp/all-in-one-wp-security-and-firewall.zip
+  && cd /tmp \
+  && rm all-in-one-wp-security-and-firewall.zip
+
+RUN set -x \
+  && wget https://downloads.wordpress.org/plugin/wp-super-cache.1.4.9.zip \
+  && echo '58e10c3cb7905fa58bc2ae1764bb1615bc1baed3cf7ba582d11bf5e8bb821766  wp-super-cache.1.4.9.zip' | sha256sum -c \
+  && cd /usr/src/wordpress/wp-content/plugins \
+  && unzip /tmp/wp-super-cache.1.4.9.zip \
+  && cd /tmp \
+  && rm wp-super-cache.1.4.9.zip
 
 # Install docker-entrypoint.sh
 
