@@ -1,4 +1,4 @@
-FROM  wordpress:4.8.0
+FROM  wordpress:4.8.0-fpm
 LABEL maintainer "Erwin Mueller <erwin.mueller@deventm.com>"
 
 RUN set -x \
@@ -46,12 +46,7 @@ RUN set -x \
   && mv /usr/local/bin/docker-entrypoint-in.sh /usr/local/bin/docker-entrypoint.sh \
   && mkdir -p /wordpress-in \
   && mkdir -p /php-in \
-  && chown www-data $WORDPRESS_ROOT \
-  && chown www-data /etc/apache2/sites-available/000-default.conf \
-  && chown www-data /etc/apache2/ports.conf \
-  && chown www-data /var/run/apache2 \
-  && chmod o+rwX /var/lock/ \
-  && chmod o+rwX /var/log/
+  && chown www-data $WORDPRESS_ROOT
 
 # Finishing up.
 
@@ -67,4 +62,4 @@ EXPOSE 8443
 
 USER www-data
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["apache2-foreground"]
+CMD ["php-fpm"]

@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    image: erwin82/wordpress:latest
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_PASSWORD: example
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    volumes:
+      - ${ROOT_DIR}:/var/www/html
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
+  nginx:
+    image: nginx:1.13.1
+    ports:
+      - 8080:80
+    depends_on:
+      - wordpress
+    links:
+      - wordpress
+    volumes:
+      - ${NGINX_CONF}:/etc/nginx/nginx.conf
+      - ${ROOT_DIR}:/var/www/html
