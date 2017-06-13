@@ -20,13 +20,13 @@ services:
       MYSQL_ROOT_PASSWORD: example
 
   nginx:
-    image: nginx:1.13.1
+    image: erwin82/nginx:latest
     ports:
-      - 8080:80
+      - 8080:8080
     depends_on:
       - wordpress
     links:
       - wordpress
     volumes:
-      - ${NGINX_CONF}:/etc/nginx/nginx.conf
+      - ${NGINX_CONF_DIR}:/nginx-in
       - ${ROOT_DIR}:/var/www/html
