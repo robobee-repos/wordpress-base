@@ -1,6 +1,6 @@
 REPOSITORY := erwin82
 NAME := wordpress
-VERSION ?= 4.8.0-r2
+VERSION ?= 4.8.0-r3-5
 
 build: _build ##@targets Builds the docker image.
 

@@ -6,7 +6,6 @@ SHELL := /bin/bash
 #REPOSITORY :=
 #DOCKER_HUB_USER ?=
 #DOCKER_HUB_PASSWORD ?=
-#APT_CACHE ?=
 
 include Makefile.functions
 
@@ -21,14 +20,11 @@ _build:
 	set $(SET_FLAG) \
 	&& if [[ "$(SKIP_CHECK)" == "true" ]]; then SKIP_CHECK=0; else SKIP_CHECK=1; fi \
 	&& if `bash -c 'exit $$SKIP_CHECK'` || ! $(image_build); then \
-	   if [ -n "$(APT_CACHE)" ]; then \
-	   APT_CACHE_ARG="--build-arg APT_CACHE=$(APT_CACHE)"; \
+	   if [ -n "$$APT_CACHE" ]; then \
+	   APT_CACHE_ARG="--build-arg APT_CACHE=$$APT_CACHE"; \
 	   fi \
 	&& docker build \
-	--build-arg https_proxy=$$HTTPS_PROXY --build-arg http_proxy=$$HTTP_PROXY \
-	--build-arg HTTPS_PROXY=$$HTTPS_PROXY --build-arg HTTP_PROXY=$$HTTP_PROXY \
-	--build-arg ftp_proxy=$$FTP_PROXY --build-arg FTP_PROXY=$$FTP_PROXY \
-	--build-arg no_proxy=$$NO_PROXY --build-arg NO_PROXY=$$NO_PROXY $$APT_CACHE_ARG \
+	$$APT_CACHE_ARG \
 	-t $(REPOSITORY)/$(NAME):$(VERSION) \
 	-t $(REPOSITORY)/$(NAME):latest .; \
 	fi
