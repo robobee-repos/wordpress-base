@@ -15,23 +15,28 @@ function copy_file() {
   fi
 }
 
-function copy_php() {
-  if [ ! -d /php-in ]; then
+function copy_php_conf() {
+  dir="/php-in"
+  if [ ! -d "${dir}" ]; then
     return
   fi
-  cd /php-in
-  copy_file php.ini /usr/local/etc/php/ 0644
-}
-
-function copy_php_confd() {
-  if [ ! -d /php-confd-in ]; then
-    return
-  fi
-  cd /php-confd-in
+  cd "${dir}"
   if ! check_files_exists "*.ini"; then
     return
   fi
-  rsync -v "/php-confd-in/*.ini" /usr/local/etc/php/conf.d/
+  rsync -v "${dir}/*.ini" /usr/local/etc/php/conf.d/
+}
+
+function copy_php_fpm_conf() {
+  dir="/php-fpm-in"
+  if [ ! -d "${dir}" ]; then
+    return
+  fi
+  cd "${dir}"
+  if ! check_files_exists "*.conf"; then
+    return
+  fi
+  rsync -v "${dir}/*.conf" /usr/local/etc/php-fpm.d/
 }
 
 function copy_wordpress() {
@@ -51,8 +56,9 @@ function sync_wordpress() {
   rsync -rlD -v /usr/src/wordpress/. .
 }
 
-copy_php
-copy_php_confd
+copy_php_conf
+copy_php_fpm_conf
+copy_wordpress
 sync_wordpress
 
 cd "$WEB_ROOT"
