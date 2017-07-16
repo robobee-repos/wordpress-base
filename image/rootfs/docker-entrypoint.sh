@@ -25,8 +25,8 @@ function copy_php_conf() {
     return
   fi
   rsync -v "${dir}/*.ini" /usr/local/etc/php/conf.d/
-}
-
+ }
+ 
 function copy_php_fpm_conf() {
   dir="/php-fpm-in"
   if [ ! -d "${dir}" ]; then
@@ -37,15 +37,15 @@ function copy_php_fpm_conf() {
     return
   fi
   rsync -v "${dir}/*.conf" /usr/local/etc/php-fpm.d/
-}
-
+ }
+ 
 function copy_wordpress() {
   if [ ! -d /wordpress-in ]; then
     return
   fi
   cd /wordpress-in
-  copy_file .htaccess "$WEB_ROOT/" 0644
-  copy_file wp-config.php "$WEB_ROOT/" 0644
+  copy_file .htaccess "${WEB_ROOT}/" 0644
+  copy_file wp-config.php "${WEB_ROOT}/" 0644
 }
 
 function sync_wordpress() {
@@ -53,7 +53,7 @@ function sync_wordpress() {
   if ! [ -e index.php -a -e wp-includes/version.php ]; then
     return
   fi
-  rsync -rlD -v /usr/src/wordpress/. .
+  rsync -rlD -u /usr/src/wordpress/. .
 }
 
 copy_php_conf
