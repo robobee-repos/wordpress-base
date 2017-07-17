@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -ex
 
 SOURCE=$1; shift
 SHA_SUM=$1; shift
@@ -11,5 +11,9 @@ cd /tmp
 wget "$SOURCE"
 echo $sha_check | sha256sum -c
 cd /usr/src/wordpress/wp-content/themes
+dir=$(echo "${name}" | sed -e 's/\..*$//')
+if [ -d "${dir}" ]; then
+  rm -rf "${dir}"
+fi
 unzip /tmp/$name
 rm /tmp/$name

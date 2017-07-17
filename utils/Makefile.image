@@ -52,3 +52,6 @@ _deploy: build
 _rebuild: 
 	$(MAKE) build SKIP_CHECK=0
 .PHONY: _rebuild
+
+apt-cacher-ng-address:
+	ID=$$(docker ps|grep apt-cacher-ng| awk "{print \$$1}"); docker inspect --format '{{ .NetworkSettings.IPAddress }}' $$ID
