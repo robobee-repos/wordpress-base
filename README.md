@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a base image for Wordpress. 
+This is a base image for Wordpress.
 It modifies the parent image insofar as
 it can take input configuration files to override the image configuration
 files, allowing for Kubernetes config maps.
@@ -35,4 +35,10 @@ from `localhost:8080`.
 
 ```
 docker-compose -f test.yaml up
+```
+
+## Optimize php-fpm
+
+```
+find /var/www/html -iname *.php|wc -l
 ```
