@@ -57,7 +57,7 @@ RUN set -x \
   && install_wp_plugin.sh https://downloads.wordpress.org/plugin/broken-link-checker.1.11.5.zip 'd9809a17fe79d274f903267341bb82b00a1c215a2e6c161b154eecf5c381f0b3'
 
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.14.zip '53bfe2a323a31e69b524bbfa4089388ec1f272020657ecb2ad9caab408297faf'
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.15.zip '9e1a1e397c4849dddb34b6e7ccc957ca73c877be90f26a089e33e4159b04d0a0'
 
 RUN set -x \
   && install_wp_plugin.sh https://downloads.wordpress.org/plugin/cookie-notice.1.2.38.zip '96cda4831cd9cafe95f2a820ce46494181a28c76529e2898392958cc60ec3cd6'
