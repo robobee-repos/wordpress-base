@@ -7,10 +7,9 @@ services:
     environment:
       WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_PASSWORD: example
-    depends_on:
-      - mysql
     links:
       - mysql
+      - smtp-relay
     volumes:
       - ${ROOT_DIR}:/var/www/html
 
@@ -30,3 +29,8 @@ services:
     volumes:
       - ${NGINX_CONF_DIR}:/nginx-in
       - ${ROOT_DIR}:/var/www/html
+
+  smtp-relay:
+    image: erwin82/exim-smtp:latest
+    command: exim -bd -q15m -v
+    env_file: .exim-env

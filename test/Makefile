@@ -8,7 +8,7 @@ NAME := wordpress
 test: setup ##@targets Starts docker compose.
 	export ROOT_DIR="$(ROOT_DIR)" \
 	&& export NGINX_CONF_DIR="$(NGINX_CONF_DIR)" \
-	&& docker-compose -p $(NAME) -f test.yaml up > log.txt
+	&& docker-compose -p $(NAME) -f test.yaml up
 .PHONY: up
 
 rm:

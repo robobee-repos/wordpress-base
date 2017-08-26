@@ -36,7 +36,7 @@ RUN set -x \
   && install_wp_plugin.sh https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip 'e4a7c8e2d344d03007ea6ec734f08f7b5479755966bca61121f72f8197ff85bd'
 
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-super-cache.1.5.3.zip 'b32eea5a369fdba4ff5830577429e8295036362d2e5e2e7f60cc2543773e8891'
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-super-cache.1.5.4.zip 'f9c94e70a11fab28f1edfdf77f083a2f582c9cc59c41f5ca349ab8fdc4a41620'
 
 RUN set -x \
   && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-piwik.zip 'e0f4f2f02ee4c376a306b82757233cd7139b2cc6a1a0f2e46cae5a07c81154ac'
@@ -51,19 +51,25 @@ RUN set -x \
   && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-optimize.2.1.1.zip 'ecb2e302e228bb9043efc01088ba297661eb6905223268afcb966161b1050761'
 
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/the-events-calendar.4.5.10.zip 'cbe6fe9329d44d499c1077fdb2696fd729109ca6f0b4c166d3150bd418d2d5a7'
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/the-events-calendar.4.5.11.zip '49cdb68d3ae8c5893c59d24669c2c603c7ecf87b56339a93fa5f6e7ad0cf1c45'
 
 RUN set -x \
   && install_wp_plugin.sh https://downloads.wordpress.org/plugin/broken-link-checker.1.11.5.zip 'd9809a17fe79d274f903267341bb82b00a1c215a2e6c161b154eecf5c381f0b3'
 
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.15.zip '9e1a1e397c4849dddb34b6e7ccc957ca73c877be90f26a089e33e4159b04d0a0'
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.16.zip '2af2496d927028c82e7a580f142db260c7cb02f37765c08381641e1f54ed4147'
 
 RUN set -x \
   && install_wp_plugin.sh https://downloads.wordpress.org/plugin/cookie-notice.1.2.38.zip '96cda4831cd9cafe95f2a820ce46494181a28c76529e2898392958cc60ec3cd6'
 
 RUN set -x \
   && install_wp_plugin.sh https://downloads.wordpress.org/plugin/akismet.3.3.4.zip 'f5e81dc4ec37d731d190753f5090f8ca725d30e2e183aadcf86f648d7ef75d6e'
+
+RUN set -x \
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/favicon-by-realfavicongenerator.zip '9721141ed1df9b4286fbef4b9e8b2a30bbae8d5d1342a30701017be852eeada3'
+
+RUN set -x \
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-mail-smtp.0.10.1.zip '2d22d3e1f37637b106df12b005308cc0faf38cb8f9190cc0622ef6537c76a1c5'
 
 # Install themes
 
