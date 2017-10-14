@@ -1,4 +1,4 @@
-FROM  wordpress:4.8.1-fpm
+FROM  wordpress:4.8.2-fpm
 LABEL maintainer "Erwin Mueller <erwin.mueller@deventm.com>"
 
 ARG APT_CACHE
@@ -33,40 +33,40 @@ RUN set -x \
   && chmod +x /usr/local/bin/install_wp_plugin.sh
 
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip 'e4a7c8e2d344d03007ea6ec734f08f7b5479755966bca61121f72f8197ff85bd'
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.19.zip 'fbd140637ee20a8e7ce26760ad7bed760e935f60dd55d160449291590d2967bc'
 
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-super-cache.1.5.4.zip 'f9c94e70a11fab28f1edfdf77f083a2f582c9cc59c41f5ca349ab8fdc4a41620'
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/akismet.4.0.zip '2dbced204cca22ca782dec462ba063ab696bbf2baa61f6442bd7dd00bd93bf61'
 
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-piwik.zip 'e0f4f2f02ee4c376a306b82757233cd7139b2cc6a1a0f2e46cae5a07c81154ac'
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip '6ecbeadc039363869a9cddb79b967f85465a146af5a47329201eb768ba41d8e7'
 
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/si-contact-form.4.0.55.zip 'cf3d005fef0d0d87589eab7556882b606a7f1035c712c8ab94aa1a1ac9096435'
-
-RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/black-studio-tinymce-widget.2.4.2.zip 'e7ddfa9a62ff9b05de9767c2df1568136e8e63bde64843c0f31e08fc02218c75'
-
-RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-optimize.2.1.1.zip 'ecb2e302e228bb9043efc01088ba297661eb6905223268afcb966161b1050761'
-
-RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/the-events-calendar.4.5.11.zip '49cdb68d3ae8c5893c59d24669c2c603c7ecf87b56339a93fa5f6e7ad0cf1c45'
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/black-studio-tinymce-widget.2.5.1.zip '0afaf48ba59c76e2fc418ae03239feec582da68d098a43fc4406a57ce3838952'
 
 RUN set -x \
   && install_wp_plugin.sh https://downloads.wordpress.org/plugin/broken-link-checker.1.11.5.zip 'd9809a17fe79d274f903267341bb82b00a1c215a2e6c161b154eecf5c381f0b3'
 
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.16.zip '2af2496d927028c82e7a580f142db260c7cb02f37765c08381641e1f54ed4147'
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/cookie-notice.1.2.39.zip 'c428ee041cd3bdc3df88f5712620dadcb1c03c0cbe7f7bcdfb39cedef5163356'
 
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/cookie-notice.1.2.38.zip '96cda4831cd9cafe95f2a820ce46494181a28c76529e2898392958cc60ec3cd6'
-
-RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/akismet.3.3.4.zip 'f5e81dc4ec37d731d190753f5090f8ca725d30e2e183aadcf86f648d7ef75d6e'
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/si-contact-form.4.0.56.zip '1d2b9cda2c0d61f61fc2893a6c66216280a2d991de4d584414b2e08b67e20e39'
 
 RUN set -x \
   && install_wp_plugin.sh https://downloads.wordpress.org/plugin/favicon-by-realfavicongenerator.zip '9721141ed1df9b4286fbef4b9e8b2a30bbae8d5d1342a30701017be852eeada3'
+
+RUN set -x \
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/the-events-calendar.4.6.1.zip '42d1892c62b58a0425d4fcc58e1dd3abc0ceb0d811029b1d5f079fef077748d1'
+
+RUN set -x \
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-piwik.zip 'f78555aec5d9644b5e1919aedcc24a8e5f20f7bdb55056006e3b85847b718497'
+
+RUN set -x \
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-super-cache.1.5.7.1.zip '92b2a0a9d347b795e3ac1e0389b904665400f048f09fa5328089c50ff5b9d17c'
+
+RUN set -x \
+  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-optimize.2.1.1.zip 'ecb2e302e228bb9043efc01088ba297661eb6905223268afcb966161b1050761'
 
 RUN set -x \
   && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-mail-smtp.0.10.1.zip '2d22d3e1f37637b106df12b005308cc0faf38cb8f9190cc0622ef6537c76a1c5'
