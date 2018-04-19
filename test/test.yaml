@@ -3,23 +3,29 @@ version: '3.1'
 services:
 
   wordpress:
-    image: erwin82/wordpress:latest
+    image: robobeerun/wordpress:latest
     environment:
-      WORDPRESS_DB_HOST: mysql:3306
-      WORDPRESS_DB_PASSWORD: example
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpressdb
+      WORDPRESS_DB_USER: wordpressdb
+      WORDPRESS_DB_PASSWORD: wordpressdb
     links:
-      - mysql
-      - smtp-relay
+      - "mariadb:db"
     volumes:
-      - ${ROOT_DIR}:/var/www/html
+      - "./root/html:/var/www/html"
 
-  mysql:
-    image: mysql:5.7
+  mariadb:
+    image: bitnami/mariadb:10.2.14-r6
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      ALLOW_EMPTY_PASSWORD: "yes"
+      MARIADB_USER: "wordpressdb"
+      MARIADB_PASSWORD: "wordpressdb"
+      MARIADB_DATABASE: "wordpressdb"
+    volumes:
+      - "./root/db:/bitnami/mariadb"
 
   nginx:
-    image: erwin82/nginx:latest
+    image: robobeerun/nginx:latest
     ports:
       - 8080:8080
     depends_on:
@@ -27,10 +33,5 @@ services:
     links:
       - wordpress
     volumes:
-      - ${NGINX_CONF_DIR}:/nginx-in
-      - ${ROOT_DIR}:/var/www/html
-
-  smtp-relay:
-    image: erwin82/exim-smtp:latest
-    command: exim -bd -q15m -v
-    env_file: .exim-env
+      - "./nginx-in:/nginx-in"
+      - "./root/html:/var/www/html"

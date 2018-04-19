@@ -1,24 +1,23 @@
 include ../utils/Makefile.help
 include ../utils/Makefile.functions
 
-ROOT_DIR:=$(shell realpath root)
-NGINX_CONF_DIR:=$(shell realpath nginx-in)
-NAME := wordpress
+export NAME := wordpress
 
 test: setup ##@targets Starts docker compose.
-	export ROOT_DIR="$(ROOT_DIR)" \
-	&& export NGINX_CONF_DIR="$(NGINX_CONF_DIR)" \
-	&& docker-compose -p $(NAME) -f test.yaml up
+	docker-compose -p $(NAME) -f test.yaml up
 .PHONY: up
 
 rm:
-	export ROOT_DIR="$(ROOT_DIR)" \
-	&& export NGINX_CONF_DIR="$(NGINX_CONF_DIR)" \
-	&& docker-compose -p $(NAME) -f test.yaml rm
+	docker-compose -p $(NAME) -f test.yaml rm -f
+
+clean: rm
+	sudo rm -rf root
 
 setup:
-	mkdir -p $(ROOT_DIR)
-	sudo chown 33:33 -R $(ROOT_DIR)
+	for file in html db; do \
+	    mkdir -p root/$${file}; \
+	    sudo chmod o+rwX root/$${file}; \
+	done
 .PHONY: setup
 
 count-php-files:

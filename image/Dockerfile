@@ -1,9 +1,7 @@
-FROM  wordpress:4.8.1-fpm
+FROM  wordpress:4.9.5-php5.6-fpm
 LABEL maintainer "Erwin Mueller <erwin.mueller@deventm.com>"
 
 ARG APT_CACHE
-ENV WEB_ROOT /var/www/html
-ENV WEB_USER www-data
 
 RUN set -x \
   # Optional add proxy entries for apt.
@@ -11,113 +9,80 @@ RUN set -x \
   echo Acquire::ftp::Proxy \"$APT_CACHE\"; >> /etc/apt/apt.conf.d/08proxy;\
   echo Acquire::http::Proxy \"$APT_CACHE\"; >> /etc/apt/apt.conf.d/08proxy;\
   echo Acquire::https::Proxy \"$APT_CACHE\"; >> /etc/apt/apt.conf.d/08proxy;\
-  fi \
+  fi
+
+RUN set -x \
   && DEBIAN_FRONTEND=noninteractive \
   && apt-get update \
   && apt-get install -y rsync wget unzip \
   && rm -rf /var/lib/apt/lists/*
 
-# Wordpress configuration.
-
-# Web Root.
+ENV WEB_ROOT="/var/www/html" \
+  WEB_USER="www-data"
 
 RUN set -x \
-  && mkdir -p /wordpress-in \
-  && chown www-data $WEB_ROOT
+  && mkdir -p ${WEB_ROOT} \
+  && chown ${WEB_USER}.${WEB_USER} $WEB_ROOT
+
+ADD rootfs/ /
+
+RUN set -x \
+  && chmod +x /*.sh \
+  && mv /usr/local/bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint-org.sh \
+  && ln -sf /dev/stdout /var/log/php-fpm-slow.log
 
 # Install plugins
 
-ADD rootfs/install_wp_plugin.sh /usr/local/bin/install_wp_plugin.sh
-
 RUN set -x \
-  && chmod +x /usr/local/bin/install_wp_plugin.sh
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip '5cc8bccd322a0338526931adb9cba5da0604d0ba610a2cf55bc56c862cda7edd'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip 'e4a7c8e2d344d03007ea6ec734f08f7b5479755966bca61121f72f8197ff85bd'
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-super-cache.1.5.9.zip '13986a20f1b8c46a5145f33f47b80d0d6ce83317361d94af32a0907718401a42'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-super-cache.1.5.4.zip 'f9c94e70a11fab28f1edfdf77f083a2f582c9cc59c41f5ca349ab8fdc4a41620'
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-piwik.zip '7cb9e6e8bc551b35e0bc7c9f3aa3ce3f6c71bd6833c3d5401e7bdc791f645466'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-piwik.zip 'e0f4f2f02ee4c376a306b82757233cd7139b2cc6a1a0f2e46cae5a07c81154ac'
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/contact-form-7.5.0.1.zip '057f13f9afd6a38dbf563c362d86cd71aa1f036679c9a586915150350351669c'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/si-contact-form.4.0.55.zip 'cf3d005fef0d0d87589eab7556882b606a7f1035c712c8ab94aa1a1ac9096435'
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/black-studio-tinymce-widget.2.6.2.zip '4a771904f28bf47ab2fd2bea1672bd7e5ab1becca4fd756a41acf149f67f4244'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/black-studio-tinymce-widget.2.4.2.zip 'e7ddfa9a62ff9b05de9767c2df1568136e8e63bde64843c0f31e08fc02218c75'
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-optimize.2.2.3.zip '59c811df5c168ad5cf7b6ce4da9d45859b6b8276bc70504d80b665d1088782f4'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-optimize.2.1.1.zip 'ecb2e302e228bb9043efc01088ba297661eb6905223268afcb966161b1050761'
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/the-events-calendar.4.6.14.1.zip 'bc8ca2f8872d620f4c071bbe34847cd639d7f1f59f342054e221c9281e6758c2'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/the-events-calendar.4.5.11.zip '49cdb68d3ae8c5893c59d24669c2c603c7ecf87b56339a93fa5f6e7ad0cf1c45'
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/broken-link-checker.1.11.5.zip 'd9809a17fe79d274f903267341bb82b00a1c215a2e6c161b154eecf5c381f0b3'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/broken-link-checker.1.11.5.zip 'd9809a17fe79d274f903267341bb82b00a1c215a2e6c161b154eecf5c381f0b3'
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.25.zip '926808945fc8293a7e3fe5b77fa5303f19bb7420a43c49484f0b7b8c8af5a038'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.16.zip '2af2496d927028c82e7a580f142db260c7cb02f37765c08381641e1f54ed4147'
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/cookie-notice.1.2.42.zip 'da10e21fd480cf2d222ae07afbf33153cafe098424f5d49511771fd2d6a9f56e'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/cookie-notice.1.2.38.zip '96cda4831cd9cafe95f2a820ce46494181a28c76529e2898392958cc60ec3cd6'
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/akismet.4.0.3.zip '97bfb53e1fa15d6e830ee4b8530acc7fc2a0b15fcdc2d9f22592b5378ba03e5b'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/akismet.3.3.4.zip 'f5e81dc4ec37d731d190753f5090f8ca725d30e2e183aadcf86f648d7ef75d6e'
-
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/favicon-by-realfavicongenerator.zip '9721141ed1df9b4286fbef4b9e8b2a30bbae8d5d1342a30701017be852eeada3'
 RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/favicon-by-realfavicongenerator.zip '9721141ed1df9b4286fbef4b9e8b2a30bbae8d5d1342a30701017be852eeada3'
-
-RUN set -x \
-  && install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-mail-smtp.0.10.1.zip '2d22d3e1f37637b106df12b005308cc0faf38cb8f9190cc0622ef6537c76a1c5'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-mail-smtp.zip '82726c57fc010e8e9f71f036528f5287ab07d79d5287724c7901c84b1b128502'
 
 # Install themes
 
-ADD rootfs/install_wp_theme.sh /usr/local/bin/install_wp_theme.sh
-
-RUN set -x \
-  && chmod +x /usr/local/bin/install_wp_theme.sh
-
 # Php configuration.
 
-ENV PHP_MAX_EXECUTION_TIME 300
-ENV PHP_MEMORY_LIMIT_MB 128
-ENV PHP_FPM_MAX_CHILDREN 10
-ENV PHP_FPM_START_SERVERS 2
-ENV PHP_FPM_MIN_SPARE_SERVERS 2
-ENV PHP_FPM_MAX_SPARE_SERVERS 5
-ENV PHP_FPM_MAX_REQUESTS 500
-ENV PHP_FPM_REQUEST_SLOWLOG_TIMEOUT 30s
-ENV PHP_FPM_CATCH_WORKERS_OUTPUT 1
-ENV PHP_OPCACHE_ENABLE_CLI 1
-ENV PHP_OPCACHE_ENABLE 1
-ENV PHP_OPCACHE_MEMORY_CONSUMPTION_MB 128
-ENV PHP_OPCACHE_MAX_ACCELERATED_FILES 4000
-
-RUN set -x \
-  && ln -sf /dev/stdout /var/log/php-fpm-slow.log \
-  && mkdir -p /php-in \
-  && mkdir -p /php-fpm-in
-
-ADD rootfs/opcache-recommended.ini /usr/local/etc/php/conf.d/zz-opcache-recommended.ini
-
-ADD rootfs/conf.ini /usr/local/etc/php/conf.d/zz-conf.ini
-
-ADD rootfs/www.conf /usr/local/etc/php-fpm.d/zz-www.conf
-
-# Finishing up.
-
-ADD rootfs/docker-entrypoint.sh /usr/local/bin/docker-entrypoint-in.sh
-
-RUN set -x \
-  && chmod +x /usr/local/bin/docker-entrypoint-in.sh \
-  && mv /usr/local/bin/docker-entrypoint.sh /usr/local/bin/docker-entrypoint-org.sh \
-  && mv /usr/local/bin/docker-entrypoint-in.sh /usr/local/bin/docker-entrypoint.sh
+ENV DEBUG="false" \
+  PHP_MAX_EXECUTION_TIME="300" \
+  PHP_MEMORY_LIMIT="128M" \
+  PHP_FPM_MAX_CHILDREN="10" \
+  PHP_FPM_START_SERVERS="2" \
+  PHP_FPM_MIN_SPARE_SERVERS="2" \
+  PHP_FPM_MAX_SPARE_SERVERS="5" \
+  PHP_FPM_MAX_REQUESTS="500" \
+  PHP_FPM_REQUEST_SLOWLOG_TIMEOUT="0" \
+  PHP_FPM_CATCH_WORKERS_OUTPUT="1" \
+  PHP_OPCACHE_ENABLE_CLI="1" \
+  PHP_OPCACHE_ENABLE="1" \
+  PHP_OPCACHE_MEMORY_CONSUMPTION="128" \
+  PHP_OPCACHE_MAX_ACCELERATED_FILES="6000"
 
 USER ${WEB_USER}
 
 WORKDIR ${WEB_ROOT}
- 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ["php-fpm"]
