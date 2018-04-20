@@ -28,8 +28,6 @@ services:
     image: robobeerun/nginx:latest
     ports:
       - 8080:8080
-    depends_on:
-      - wordpress
     links:
       - wordpress
     volumes:
