@@ -1,4 +1,4 @@
-FROM  wordpress:4.9.5-php5.6-fpm
+FROM  wordpress:4.9.7-php5.6-fpm
 LABEL maintainer "Erwin Mueller <erwin.mueller@deventm.com>"
 
 ARG APT_CACHE
