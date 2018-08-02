@@ -7,13 +7,32 @@ It modifies the parent image insofar as
 it can take input configuration files to override the image configuration
 files, allowing for Kubernetes config maps.
 
+## Updating
+
+The files in `WEB_ROOT` are updated with `rsync` from the docker image.
+To avoid endless a loop of a restarting container a timeout for updating
+can be set in the variables `UPDATE_TIME_S`. No `rsync` will be called if
+the restart time was less than this timeout. While `rsync` should not write
+files that do not need to be updated, `rsync` is still making read requests.
+
 ## Exposed Ports
 
-| Port | Description |
+| Port | Name |
 | ------------- | ----- |
-| 9000  | php-fpm |
+| `9000`  | php-fpm |
 
 ## Environment Parameters
+
+### General
+
+| Variable | Default | Description |
+| ------------- | ------------- | ----- |
+| WEB_ROOT  | `/var/www/html` | The persistent directory of the application. |
+| WEB_USER  | `www-data` | The application user. |
+| UPDATE_TIME_S  | `300` | Set to the seconds that will be waited before a full update of the application will be done. |
+| DEBUG  | `false` | Set to `true` to enable script debug. |
+
+### PHP
 
 | Variable | Default | Description |
 | ------------- | ------------- | ----- |
