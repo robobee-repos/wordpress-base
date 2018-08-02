@@ -5,6 +5,8 @@ services:
   wordpress:
     image: robobeerun/wordpress:latest
     environment:
+      DEBUG: "true"
+      UPDATE_TIME_S: "300"
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: wordpressdb
       WORDPRESS_DB_USER: wordpressdb
@@ -28,8 +30,6 @@ services:
     image: robobeerun/nginx:latest
     ports:
       - 8080:8080
-    depends_on:
-      - wordpress
     links:
       - wordpress
     volumes:
