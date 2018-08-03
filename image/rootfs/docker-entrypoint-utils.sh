@@ -92,19 +92,21 @@ function set_debug() {
   fi
 }
 
-function check_update() {
+function check_update_time() {
   if [[ -f "${WEB_ROOT}/.last_update" ]]; then
     last_update=$(cat ${WEB_ROOT}/.last_update)
     current_time=$(date +%s)
     time_diff=$((current_time-last_update))
-    echo -n "`date +%s`" > ${WEB_ROOT}/.last_update
     if [[ $time_diff -gt $UPDATE_TIME_S ]]; then
       return 0
     else
       return 1
     fi
   else
-    echo -n "`date +%s`" > ${WEB_ROOT}/.last_update
     return 0
   fi
+}
+
+function update_update_time() {
+  echo -n "`date +%s`" > ${WEB_ROOT}/.last_update
 }
