@@ -29,7 +29,8 @@ files that do not need to be updated, `rsync` is still making read requests.
 | ------------- | ------------- | ----- |
 | WEB_ROOT  | `/var/www/html` | The persistent directory of the application. |
 | WEB_USER  | `www-data` | The application user. |
-| UPDATE_TIME_S  | `300` | Set to the seconds that will be waited before a full update of the application will be done. |
+| SYNC_ENABLED  | `true` | Set to `false` to deactivate the application will be done. |
+| SYNC_TIME_S  | `300` | Set to the seconds that will be waited before a full update of the application will be done. |
 | DEBUG  | `false` | Set to `true` to enable script debug. |
 
 ### PHP

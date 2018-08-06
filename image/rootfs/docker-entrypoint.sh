@@ -5,9 +5,9 @@ source /docker-entrypoint-utils.sh
 set_debug
 echo "Running as `id`"
 
-if check_update_time; then
+if is_sync_enabled && check_update_time ${WEB_ROOT}; then
   sync_dir /usr/src/wordpress ${WEB_ROOT}
-  update_update_time
+  update_update_time ${WEB_ROOT}
 fi
 
 copy_files "/php-in" "/usr/local/etc/php/conf.d" "*.ini"

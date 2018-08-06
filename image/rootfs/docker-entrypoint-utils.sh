@@ -92,12 +92,22 @@ function set_debug() {
   fi
 }
 
+function is_sync_enabled() {
+  if [[ "$SYNC_ENABLED" == "true" ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 function check_update_time() {
-  if [[ -f "${WEB_ROOT}/.last_update" ]]; then
-    last_update=$(cat ${WEB_ROOT}/.last_update)
+  dataDir="$1"; shift
+  cd $dataDir
+  if [[ -f ".last_update" ]]; then
+    last_update=$(cat .last_update)
     current_time=$(date +%s)
     time_diff=$((current_time-last_update))
-    if [[ $time_diff -gt $UPDATE_TIME_S ]]; then
+    if [[ $time_diff -gt $SYNC_TIME_S ]]; then
       return 0
     else
       return 1
@@ -108,5 +118,7 @@ function check_update_time() {
 }
 
 function update_update_time() {
-  echo -n "`date +%s`" > ${WEB_ROOT}/.last_update
+  dataDir="$1"; shift
+  cd $dataDir
+  echo -n "`date +%s`" > .last_update
 }
