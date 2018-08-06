@@ -80,7 +80,8 @@ RUN set -x \
 # Php configuration.
 
 ENV DEBUG="false" \
-  UPDATE_TIME_S="300" \
+  SYNC_ENABLED="true" \
+  SYNC_TIME_S="300" \
   PHP_MAX_EXECUTION_TIME="300" \
   PHP_MEMORY_LIMIT="128M" \
   PHP_FPM_MAX_CHILDREN="10" \
