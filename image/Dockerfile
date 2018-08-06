@@ -61,7 +61,7 @@ RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/google-analytics-dashboard-for-wp.5.3.5.zip '9dc05c2cbd11b71b14c50e0c0cddd37af405735193730bdadd320e0608f82ab6'
 
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/post-smtp.zip '2e63d25d6f4bdaaba723c4c3b9009a03b22c5d278d48102e3ca1762097a3cf1e'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/post-smtp.zip '95f23006e3849c876cecbd2afc296c05b0fb4b368b2b9d454ea8bf987644ec53'
 
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/the-events-calendar.4.6.21.zip '561408c2168ff49bae5fb7260f4658846574d0db41d102f2b5d9c7d98607ebaa'
