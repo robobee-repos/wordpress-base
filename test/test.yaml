@@ -6,7 +6,7 @@ services:
     image: robobeerun/wordpress:latest
     environment:
       DEBUG: "true"
-      SYNC_ENABLED: "false"
+      SYNC_ENABLED: "true"
       SYNC_TIME_S: "300"
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: wordpressdb
@@ -16,6 +16,7 @@ services:
       - "mariadb:db"
     volumes:
       - "./root/html:/var/www/html"
+      - "./php-in:/php-in"
 
   mariadb:
     image: bitnami/mariadb:10.2.14-r6
