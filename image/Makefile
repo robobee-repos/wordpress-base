@@ -1,6 +1,6 @@
 REPOSITORY := robobeerun
 NAME := wordpress
-VERSION ?= v4.9.7-php5.6-fpm-r3
+VERSION ?= v4.9.7-php5.6-fpm-r4
 
 build: _build ##@targets Builds the docker image.
 
