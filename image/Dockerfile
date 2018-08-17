@@ -96,6 +96,10 @@ ENV DEBUG="false" \
   PHP_OPCACHE_MEMORY_CONSUMPTION="128" \
   PHP_OPCACHE_MAX_ACCELERATED_FILES="6000"
 
+RUN set -x \
+  && chown ${WEB_USER}.${WEB_USER} /usr/local/etc/php/conf.d \
+  && chown ${WEB_USER}.${WEB_USER} /usr/local/etc/php-fpm.d
+
 USER ${WEB_USER}
 
 WORKDIR ${WEB_ROOT}

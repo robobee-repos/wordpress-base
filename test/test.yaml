@@ -12,6 +12,9 @@ services:
       WORDPRESS_DB_NAME: wordpressdb
       WORDPRESS_DB_USER: wordpressdb
       WORDPRESS_DB_PASSWORD: wordpressdb
+      PHP_FPM_MAX_CHILDREN: 2
+      PHP_FPM_MIN_SPARE_SERVERS: 2
+      PHP_FPM_MAX_SPARE_SERVERS: 2
     links:
       - "mariadb:db"
     volumes:
