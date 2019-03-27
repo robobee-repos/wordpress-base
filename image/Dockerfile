@@ -59,9 +59,9 @@ RUN set -x \
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/gutenberg.5.3.0.zip '75392c63d1d44e4c66ae07dcce8c2c2527a7291266d9278091f2ed394ee7b250'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.1.15.1.zip '819cb3c6247a7fde3a5cbab26022d27ad49eb33207d164359aad904bf62e3d79'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.1.15.6.zip '4690ada93ddc09a9abac3cfbed942dcd70fd4ff152a85e16143a993d42cefc75'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/miniorange-login-with-eve-online-google-facebook.zip '1a31ccac31b4ee2cbdd585c7811b2de38a0179dd471713d79dfb152783e47a4b'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/miniorange-login-with-eve-online-google-facebook.zip 'b1dae0d0551dfe227dcb4de40f754f988623fb3bc24c613718ceea51ab8a8ee6'
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/pdf-image-generator.1.5.6.zip 'e7ff5db84e55a025e6fde9fb178057e9f61cb96ef91bc50734f914e36dbd2446'
 RUN set -x \

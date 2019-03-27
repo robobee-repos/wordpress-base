@@ -35,7 +35,7 @@ check-plugins: ##@targets Downloads and computes the hash for the specified plug
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/gdpr.2.1.0.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/google-analytics-dashboard-for-wp.5.3.7.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/gutenberg.5.3.0.zip)
-	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.1.15.1.zip)
+	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.1.15.6.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/miniorange-login-with-eve-online-google-facebook.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/pdf-image-generator.1.5.6.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/polylang.2.5.2.zip)
