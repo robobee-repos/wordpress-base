@@ -1,4 +1,4 @@
-FROM  wordpress:4.9.8-php7.1-fpm
+FROM  wordpress:5.1.1-php7.1-fpm
 LABEL maintainer "Erwin Mueller <erwin.mueller@deventm.com>"
 
 ARG APT_CACHE
@@ -35,53 +35,39 @@ RUN set -x \
 # Install plugins
 
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.30.zip 'd823a90d90a7d3e44e61b7f00b07de9a0443211a16953e1e2b6a7fc9afebcc42'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.34.zip '82b0691a049a52ac41f6c8a1ea93ad288ee956cd2b3a9d1fd9581886186c64dd'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/akismet.4.0.8.zip 'f97b57eb72df576eab5bdca26b11cf0f4d6d5a2bacc678e4db31b75686bf7996'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/akismet.4.1.1.zip '718a0fb6aa21b316f3e852ecd0f8fee8def49b67f4f1b1850845999c7ecac39e'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip '1aa7d687def9a961a59a989e854dca768a1eca3a7ef03c9161205e97f6650d23'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip 'a31c4234e15f736e616c4c7e2f43cda629ae89a1a4854c6a05bb64393f26da13'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/atomic-blocks.1.3.4.zip '98bf9b1c8aff32dadb7511dd1aff65acc0df343dc9476c239e7323d8e1ff7f18'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/atomic-blocks.1.5.5.zip '7bc8891141c7f27c624f51f0bc95e369419143d92ac8a1cda1a55f31df921f2e'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/black-studio-tinymce-widget.2.6.2.zip '4a771904f28bf47ab2fd2bea1672bd7e5ab1becca4fd756a41acf149f67f4244'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/black-studio-tinymce-widget.2.6.8.zip '57db1fdc141a3da788a2928c5b1c865517547a2a073fdbb093e462e65bbb3ce0'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/broken-link-checker.1.11.5.zip 'd9809a17fe79d274f903267341bb82b00a1c215a2e6c161b154eecf5c381f0b3'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/broken-link-checker.1.11.8.zip '0d05d82d17915c3835bdccd3c0e5898afceeda6746a9319740b1f673f6dad0aa'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/contact-form-7.5.0.4.zip 'bb0abce8b4e13cb61ddd0b1edd3783194579c20b3a8cd55c266087b5fd2e610a'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/contact-form-7.5.1.1.zip '701e2bb6d2e4e0b6fd9866344862226e1410f7344b86c0262c13ec80b582a263'
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/document-gallery.4.4.3.zip 'bf89e41f26b76ffff2c81df149293981079c33a121bb1f2227c7e123f9027605'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/favicon-by-realfavicongenerator.zip '2655f2e78efdcb2777847df0948fb708f79d7810db97a791aff054a10f74bb99'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/favicon-by-realfavicongenerator.zip '0695c44a2b56990220774dbebdd4efdf9ce7f27472de8d64f153f00dfbaf9af4'
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/gdpr.2.1.0.zip '1c6e510d4a0fd95c96c481c84c3b0d958dc65a0f71b3b07ded5ab312a5c8b5d4'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/google-analytics-dashboard-for-wp.5.3.5.zip '9dc05c2cbd11b71b14c50e0c0cddd37af405735193730bdadd320e0608f82ab6'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/google-analytics-dashboard-for-wp.5.3.7.zip 'c366ed66ed81443aeecf10a49f5500b64de2a7969c43585aa2ad34c9991131ff'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/gutenberg.3.8.0.zip '65994e026c753ac0a6d7c8f6821f9b0401b663b54d6644b80a3cd859c8e3fdba'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/gutenberg.5.3.0.zip '75392c63d1d44e4c66ae07dcce8c2c2527a7291266d9278091f2ed394ee7b250'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.1.15.1.zip '819cb3c6247a7fde3a5cbab26022d27ad49eb33207d164359aad904bf62e3d79'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.1.15.6.zip '4690ada93ddc09a9abac3cfbed942dcd70fd4ff152a85e16143a993d42cefc75'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/miniorange-login-with-eve-online-google-facebook.zip '8998975fdc09d2a6ea46229b6d7fc3ee6e50e38ffa629bb505579eb4a81ebb44'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/miniorange-login-with-eve-online-google-facebook.zip 'b1dae0d0551dfe227dcb4de40f754f988623fb3bc24c613718ceea51ab8a8ee6'
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/pdf-image-generator.1.5.6.zip 'e7ff5db84e55a025e6fde9fb178057e9f61cb96ef91bc50734f914e36dbd2446'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/polylang.2.3.10.zip 'fad00ba41d61b85c69402e99628aae33e73ff6261f6078a193ef75dbb08736d3'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/polylang.2.5.2.zip '10e7e3f4445085b2e0ea13a73fcd219c7bd1d3ac7ce67ad22d753f9afcccfe01'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/post-smtp.1.9.4.zip '7096b8a8d869adc31ae80ab6b59322f821ed780b645fb450a9f2104ab1fd921a'
-RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/responsive-lightbox.2.0.5.zip '978b6a29c16140bc9e8c732a54f7071286322d19294d46e6ec5eb6757e8e1417'
-RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-smushit.2.8.1.zip '7795cd107a2a85c7416d3e30c675e827de7a0e056bc6267dfcb5aaee7b6ee6fe'
-RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/syntaxhighlighter.zip '944ff3dbaec456270b5e6fcad8060a86d9233b5902cdea0297f17b91fd61dfeb'
-RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/the-events-calendar.4.6.23.zip 'c5a826fdf97fe2492ba2fc1d1d0f35d07bef91dfcc41db44439d4f5f4e14a375'
-RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-super-cache.1.6.4.zip 'f728753585bd9058862982a4abb96564e02ed6999ed605a538c7e08b26115808'
-RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-optimize.2.2.4.zip '895d62014f7befef99c32a03e58da3395ae7c62c78945a4e372c67f230900b5b'
-RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-typography.5.4.1.zip '3076078f882b58d11058770bc051179004c888e0165455056910e7efac35e4f6'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/post-smtp.1.9.8.zip '62870c15f55af821957d69cc927a5d3c4543739c63125a9007c4546c11f2e45d'
 
 # Install themes
 
