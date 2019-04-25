@@ -35,13 +35,13 @@ RUN set -x \
 # Install plugins
 
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.34.zip '82b0691a049a52ac41f6c8a1ea93ad288ee956cd2b3a9d1fd9581886186c64dd'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.35.zip '7a539476d9dfa85564312a5a87ed9b464a70986efb50a789e0c0ca48cba98331'
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/akismet.4.1.1.zip '718a0fb6aa21b316f3e852ecd0f8fee8def49b67f4f1b1850845999c7ecac39e'
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip 'a31c4234e15f736e616c4c7e2f43cda629ae89a1a4854c6a05bb64393f26da13'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/atomic-blocks.1.5.5.zip '7bc8891141c7f27c624f51f0bc95e369419143d92ac8a1cda1a55f31df921f2e'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/atomic-blocks.1.6.1.zip 'ebf791289a3857b9357ea1ec6117ec8366b860dc6484c8679f20c4d5fafe6501'
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/black-studio-tinymce-widget.2.6.8.zip '57db1fdc141a3da788a2928c5b1c865517547a2a073fdbb093e462e65bbb3ce0'
 RUN set -x \
@@ -57,17 +57,31 @@ RUN set -x \
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/google-analytics-dashboard-for-wp.5.3.7.zip 'c366ed66ed81443aeecf10a49f5500b64de2a7969c43585aa2ad34c9991131ff'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/gutenberg.5.3.0.zip '75392c63d1d44e4c66ae07dcce8c2c2527a7291266d9278091f2ed394ee7b250'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/gutenberg.5.5.0.zip '6d32dd45ec84568e225d3bc75814fcfb90c2d8e2bffb8816e920742276c424ad'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.1.15.6.zip '4690ada93ddc09a9abac3cfbed942dcd70fd4ff152a85e16143a993d42cefc75'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.1.15.7.zip '63bc06a6d72cfc7681533aa20f2ff76931411f6a6d533b567b7033e809159626'
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/miniorange-login-with-eve-online-google-facebook.zip 'b1dae0d0551dfe227dcb4de40f754f988623fb3bc24c613718ceea51ab8a8ee6'
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/pdf-image-generator.1.5.6.zip 'e7ff5db84e55a025e6fde9fb178057e9f61cb96ef91bc50734f914e36dbd2446'
 RUN set -x \
-  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/polylang.2.5.2.zip '10e7e3f4445085b2e0ea13a73fcd219c7bd1d3ac7ce67ad22d753f9afcccfe01'
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/polylang.2.5.3.zip '8acc7e82e1ec359daff4eda50db7df4795b459b36fb0c59d99c88549c7e3798c'
 RUN set -x \
   && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/post-smtp.1.9.8.zip '62870c15f55af821957d69cc927a5d3c4543739c63125a9007c4546c11f2e45d'
+RUN set -x \
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/responsive-lightbox.zip '5ad44c68a90f4ae90881e4d07fdf2133cf21ea6960f8f6a342ce55e141ccc23b'
+RUN set -x \
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-smushit.3.2.0.1.zip 'bbc6310261b03d4b04909f32a412dc0e7e6e2ab2d95ea3475b1b8a287a7bbe06'
+RUN set -x \
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/syntaxhighlighter.zip 'ade0b0d034ec74bf58a38a9ae4c72b1b3e4e8b76b50e298a89dd9e3d242cc47e'
+RUN set -x \
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/the-events-calendar.4.9.0.zip '93bd422bfc9586f1f672ddd46fdb9afa35ccdf8a4c4b2d8bea9560224fe31a58'
+RUN set -x \
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-super-cache.1.6.4.zip '168b5f8fd91ae26216e4ee8e484c84e6b222c6dddd24e1643d79c7875fbaca0c'
+RUN set -x \
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-optimize.2.3.3.zip '72c6e805cf5b694d5094e47c945ceac259b3f462326d19e4cff4b30469667aa7'
+RUN set -x \
+  && /install_wp_plugin.sh https://downloads.wordpress.org/plugin/wp-typography.5.5.4.zip '75ed5a432a5db969d639c2352a44a5e68c91dacb4a4dd52b0add784b078804d5'
 
 # Install themes
 
