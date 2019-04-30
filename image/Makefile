@@ -1,6 +1,6 @@
 REPOSITORY := robobeerun
 NAME := wordpress
-VERSION ?= v5.1.1-php7.1-fpm-r.2
+VERSION ?= v5.1.1-php7.1-fpm-r.3
 
 .PHONY: build
 build: _build ##@targets Builds the docker image.
@@ -26,14 +26,14 @@ check-plugins: ##@targets Downloads and computes the hash for the specified plug
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/add-to-any.1.7.35.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/akismet.4.1.1.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip)
-	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/atomic-blocks.1.6.1.zip)
+	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/atomic-blocks.1.7.0.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/black-studio-tinymce-widget.2.6.8.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/broken-link-checker.1.11.8.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/contact-form-7.5.1.1.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/document-gallery.4.4.3.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/favicon-by-realfavicongenerator.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/gdpr.2.1.0.zip)
-	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/google-analytics-dashboard-for-wp.5.3.7.zip)
+	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/google-analytics-dashboard-for-wp.5.3.8.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/gutenberg.5.5.0.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.1.15.7.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/miniorange-login-with-eve-online-google-facebook.zip)
@@ -43,7 +43,7 @@ check-plugins: ##@targets Downloads and computes the hash for the specified plug
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/responsive-lightbox.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/wp-smushit.3.2.0.1.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/syntaxhighlighter.zip)
-	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/the-events-calendar.4.9.0.zip)
+	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/the-events-calendar.4.9.0.3.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/wp-super-cache.1.6.4.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/wp-optimize.2.3.3.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/wp-typography.5.5.4.zip)
