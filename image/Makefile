@@ -1,6 +1,6 @@
 REPOSITORY := robobeerun
 NAME := wordpress
-VERSION ?= v5.2.0-php7.1-fpm-r.1
+VERSION ?= v5.2.0-php7.1-fpm-r.2
 
 .PHONY: build
 build: _build ##@targets Builds the docker image.
@@ -23,7 +23,7 @@ endef
 .PHONY: check-plugins
 check-plugins: ##@targets Downloads and computes the hash for the specified plugins.
 	@echo "#!/bin/bash"
-	@echo "set -x"
+	@echo "set -e"
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/add-to-any.1.7.36.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/akismet.4.1.1.zip)
 	@$(call checkfile_for_install,plugin,https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip)
