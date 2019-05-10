@@ -1,6 +1,6 @@
 #!/bin/bash
-set -x
-/install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.36.zip 'a31005427c445566da6cf0f5c44dc3e2a9ceec9c4ead4544f8a216e8da3fa5c5'
+set -e
+/install_wp_plugin.sh https://downloads.wordpress.org/plugin/add-to-any.1.7.36.zip '5f0bab0875c3dda4e37f3ac658751ee82afa0019cda2cac9a4cd65e8c6a3614a'
 /install_wp_plugin.sh https://downloads.wordpress.org/plugin/akismet.4.1.1.zip 'feb63500c70c9cd445649635e9e62507fc752196abff3dafdbc9166782366dc2'
 /install_wp_plugin.sh https://downloads.wordpress.org/plugin/all-in-one-wp-security-and-firewall.zip '538bd27902b4fb30b68c478184241dd650b2833f90dac87991c982497ffd71c0'
 /install_wp_plugin.sh https://downloads.wordpress.org/plugin/atomic-blocks.1.7.1.zip '3c64da6af0bdae658c45a102defc390d48ab9de467fe9bf5d0795e1b60687727'
@@ -9,7 +9,7 @@ set -x
 /install_wp_plugin.sh https://downloads.wordpress.org/plugin/contact-form-7.5.1.1.zip '701e2bb6d2e4e0b6fd9866344862226e1410f7344b86c0262c13ec80b582a263'
 /install_wp_plugin.sh https://downloads.wordpress.org/plugin/document-gallery.4.4.3.zip 'bf89e41f26b76ffff2c81df149293981079c33a121bb1f2227c7e123f9027605'
 /install_wp_plugin.sh https://downloads.wordpress.org/plugin/favicon-by-realfavicongenerator.zip '0695c44a2b56990220774dbebdd4efdf9ce7f27472de8d64f153f00dfbaf9af4'
-/install_wp_plugin.sh https://downloads.wordpress.org/plugin/gdpr.2.1.0.zip 'a1c87a40e6cceb44e27a25074aeac9af7858839a60af941f9ed98ced5407dc89'
+/install_wp_plugin.sh https://downloads.wordpress.org/plugin/gdpr.2.1.0.zip '1c6e510d4a0fd95c96c481c84c3b0d958dc65a0f71b3b07ded5ab312a5c8b5d4'
 /install_wp_plugin.sh https://downloads.wordpress.org/plugin/google-analytics-dashboard-for-wp.5.3.8.zip '76603dd46651c20e8872ecc48ddf1bfe1fa6936f96e85abecf0b5bb19a96d6fd'
 /install_wp_plugin.sh https://downloads.wordpress.org/plugin/gutenberg.5.6.1.zip '313a22544ad0a1169e6293bb30ea1d937fe203f7ae93b4e9f23a2b49d0e82f86'
 /install_wp_plugin.sh https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.1.15.8.zip 'a85229740300ee1cbcb0567b997f4bccecb16d62c009020ac1c38fee58040454'
