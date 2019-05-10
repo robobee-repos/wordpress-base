@@ -19,7 +19,7 @@ services:
       - "./php-in:/php-in"
 
   mariadb:
-    image: bitnami/mariadb:mariadb:10.1.38
+    image: bitnami/mariadb:10.1.38
     environment:
       ALLOW_EMPTY_PASSWORD: "yes"
       MARIADB_USER: "wordpressdb"
